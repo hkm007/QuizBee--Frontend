@@ -13,11 +13,11 @@ import SyncLoader from 'react-spinners/SyncLoader'
 import Navbar from './components/Navbar';
 import Home from './components/screens/Home';
 import Contact from './components/screens/Contact';
-import Blogs from './components/screens/Blogs';
-import SingleBlog from './components/screens/SingleBlog';
+import Quizes from './components/screens/Quizes';
+import Quiz from './components/screens/Quiz';
 import Login from './components/screens/Login';
 import Register from './components/screens/Register';
-import NewBlog from './components/screens/NewBlog';
+import NewQuiz from './components/screens/NewQuiz';
 import Profile from './components/screens/Profile';
 import { reducer, initialState } from './reducers/userReducer'
 import { reducerLoading, initialstateLoading } from './reducers/loadingReducer'
@@ -45,12 +45,12 @@ const Routing = () => {
     return (
         <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/blogs" component={Blogs} />
-            <Route path="/blog/:blog_id" component={SingleBlog} />
+            <Route path="/quizes" component={Quizes} />
+            <Route path="/quiz/:quiz_id" component={Quiz} />
             <Route path="/contact" component={Contact} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/new" component={NewBlog} />
+            <Route path="/new" component={NewQuiz} />
             <Route path="/profile" component={Profile} />
         </Switch>
     )

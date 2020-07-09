@@ -17,7 +17,6 @@ function Login() {
     const PostData = (e) => {
         e.preventDefault()
         dispatchLoading({type:"SHOW"})
-        let url = '/client/login'
 
         let data = {
             username,
@@ -32,7 +31,7 @@ function Login() {
             }
         }
 
-        fetch(url, fetchData)
+        fetch('/user/login', fetchData)
         .then(res => res.json())
         .then(data2 => {
             dispatchLoading({type:"HIDE"})
@@ -42,6 +41,7 @@ function Login() {
             else {
                 localStorage.setItem("jwt", JSON.stringify(data2.token))
                 localStorage.setItem("user", JSON.stringify(data2.user))
+                localStorage.setItem("status", JSON.stringify(data2.status))
                 dispatch({type:"USER", payload:data2.user})
                 toast.success(data2.message)
                 history.push('/')

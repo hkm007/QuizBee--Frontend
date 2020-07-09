@@ -7,7 +7,6 @@ import { toast } from 'react-toastify';
 import Moment from 'react-moment';
 import { UserContext, LoadingContext } from '../../App'
 import DeleteModal from '../modals/DeleteModal';
-import UpdateModal from '../modals/UpdateModal';
 
 function Profile(props) {
     const history = useHistory()
@@ -15,16 +14,18 @@ function Profile(props) {
     const [mydata, setMydata] = useState([])
     const [userdata , setUserdata] = useState({})
     const [deleteModal, setDeleteModal] = useState(false);
-    const [updateModal, setUpdateModal] = useState(false);
     const [deleteId, setDeleteId] = useState('');
     const [deleteTitle, setDeleteTitle] = useState('');
-    const [updateId, setUpdateId] = useState('');
-    const [updateTitle, setUpdateTitle] = useState('');
-    const [updateMessage, setUpdateMessage] = useState('');
     const {state} = useContext(UserContext)
     const { dispatchLoading } = useContext(LoadingContext)
     
     useEffect(() => {
+        const status = JSON.parse(localStorage.getItem("status"))
+
+        if(status === 0) {
+          history.push('/')
+        }
+        
         dispatchLoading({type:"SHOW"})
         {(state) ? setUserdata(state) : setUserdata(JSON.parse(localStorage.getItem("user")))}
         fetch(`/myblog`, {
@@ -58,13 +59,6 @@ function Profile(props) {
         setDeleteTitle(blogTitle)
     }
 
-    const updateFunc = (blogId, blogTitle, blogMessage) => {
-        setUpdateModal(true)
-        setUpdateId(blogId)
-        setUpdateTitle(blogTitle)
-        setUpdateMessage(blogMessage)
-    }
-
     const deletePost = (blogId) => {
         dispatchLoading({type:"SHOW"})
         fetch(`/delete/${blogId}`, {
@@ -84,30 +78,6 @@ function Profile(props) {
         })
         .catch(err => {
             dispatchLoading({type:"HIDE"})
-            toast.error('Something went wrong')
-        })
-    }
-
-    const updatePost = (blogId, blogMessage) => {
-        dispatchLoading({type:"SHOW"})
-        fetch(`/update/${blogId}`, {
-            method:"put",
-            body: {
-                blogMessage
-            },
-            headers: {
-                "Authorization": "Bearer "+JSON.parse(localStorage.getItem("jwt"))
-            }
-        })
-        .then(res => res.json())
-        .then(data2 => {
-            dispatchLoading({type:"HIDE"})
-            console.log(data2)
-            toast.success(data2.message)
-        })
-        .catch(err => {
-            dispatchLoading({type:"HIDE"})
-            console.log(err)
             toast.error('Something went wrong')
         })
     }
@@ -132,7 +102,7 @@ function Profile(props) {
                                             <Link to={`/blog/${item._id}`} style={{textDecoration:'none', color:'blueviolet'}} ><h4 className="mb-1" ref={item => inputRef.current[index] = item} onMouseEnter={()=>changeColor1(index)} onMouseLeave={()=>changeColor2(index)}>{item.title}</h4></Link>
                                             <small className="text-muted"><Moment fromNow>{item.postedOn}</Moment></small>
                                         </div>
-                                        <div className="mt-2"><AiOutlineEdit size={'2em'} onClick={() => updateFunc(item._id, item.title, item.content)} /> <FiTrash size={'2em'} color={'red'} className="mx-1" onClick={() => deleteFunc(item._id, item.title)} /></div> 
+                                        <div className="mt-2"><FiTrash size={'2em'} color={'red'} className="mx-1" onClick={() => deleteFunc(item._id, item.title)} /></div> 
                                     </div>
                                 </div>
                             )
@@ -140,7 +110,6 @@ function Profile(props) {
                     }
                 </div>
                 <DeleteModal show={deleteModal} display={setDeleteModal} title={deleteTitle} blogId={deleteId} action={deletePost} />
-                <UpdateModal show={updateModal} display={setUpdateModal} title={updateTitle} blogId={updateId} message={updateMessage} action={updatePost} />
             </div>
         </Container>
     )

@@ -1,50 +1,17 @@
-import React, { useState, useContext } from 'react'
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react'
 import { Container } from 'reactstrap'
 import { toast } from 'react-toastify';
-import { LoadingContext } from '../../App'
 import Footer from '../Footer'
 
-
 function Contact() {
-    const history = useHistory()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
     const [status, setStatus] = useState(false)
-    const { dispatchLoading } = useContext(LoadingContext)
 
     const sendMessage = (e) => {
         e.preventDefault()
-        dispatchLoading({type:"SHOW"})
-        let url = `/contact`
-
-        let data = {
-            name,
-            email, 
-            message,
-            status
-        }
-
-        let fetchData = {
-            method: 'POST', 
-            body: JSON.stringify(data),
-            headers: { 
-                'Content-Type': 'application/json'
-            }
-        }
-
-        fetch(url, fetchData)
-        .then(res => res.json())
-        .then(data2 => {
-            dispatchLoading({type:"HIDE"})
-            {(data2.error) ? toast.error(data2.error) : toast.success(data2.message)}
-            history.push('/')
-        })
-        .catch(err => {
-            dispatchLoading({type:"HIDE"})
-            toast.error('Something went wrong!')
-        })
+        toast.error('Currently out of service!')
     }
 
     return (
