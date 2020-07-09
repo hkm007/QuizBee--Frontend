@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Old+Standard+TT:ital@1&display=swap');
+
+.logoBrand {
+    font-family: 'Grand Hotel', cursive;
+}
+
+.homeHeading {
+    font-family: 'Grand Hotel', cursive;
+}
+
+.homePara {
+    font-family: 'Old Standard TT', serif;
+}
+
+.blogHeadingAll {
+    font-family: 'Chelsea Market', cursive;
+}
+
+.blogHeadingSingle {
+    font-family: 'Chelsea Market', cursive;
+}
