@@ -23,10 +23,10 @@ function Register() {
         let data = {}
         let role = 0
 
-        if(passKey && passKey != '007') {
+        if(passKey && passKey !== '007') {
             dispatchLoading({type:"HIDE"})
             return toast.error('Please type correct key')
-        } else if(passKey && passKey == '007') {
+        } else if(passKey && passKey === '007') {
             data = {
                 username,
                 email,

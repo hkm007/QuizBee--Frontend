@@ -55,49 +55,50 @@ function Quiz(props) {
         e.preventDefault();
         let correct = 0;
 
-        if(data.a1.toLowerCase() == a1res.toLowerCase()) {
+        if(data.a1.toLowerCase() === a1res.toLowerCase()) {
             correct += 1;
         }
 
-        if(data.a2.toLowerCase() == a2res.toLowerCase()) {
+        if(data.a2.toLowerCase() === a2res.toLowerCase()) {
             correct += 1;
         }
 
-        if(data.a3.toLowerCase() == a3res.toLowerCase()) {
+        if(data.a3.toLowerCase() === a3res.toLowerCase()) {
             correct += 1;
         }
 
-        if(data.a4.toLowerCase() == a4res.toLowerCase()) {
+        if(data.a4.toLowerCase() === a4res.toLowerCase()) {
             correct += 1;
         }
 
-        if(data.a5.toLowerCase() == a5res.toLowerCase()) {
+        if(data.a5.toLowerCase() === a5res.toLowerCase()) {
             correct += 1;
         }
 
-        if(data.a6.toLowerCase() == a6res.toLowerCase()) {
+        if(data.a6.toLowerCase() === a6res.toLowerCase()) {
             correct += 1;
         }
 
-        if(data.a7.toLowerCase() == a7res.toLowerCase()) {
+        if(data.a7.toLowerCase() === a7res.toLowerCase()) {
             correct += 1;
         }
 
-        if(data.a8.toLowerCase() == a8res.toLowerCase()) {
+        if(data.a8.toLowerCase() === a8res.toLowerCase()) {
             correct += 1;
         }
 
-        if(data.a9.toLowerCase() == a9res.toLowerCase()) {
+        if(data.a9.toLowerCase() === a9res.toLowerCase()) {
             correct += 1;
         }
 
-        if(data.a10.toLowerCase() == a10res.toLowerCase()) {
+        if(data.a10.toLowerCase() === a10res.toLowerCase()) {
             correct += 1;
         }
 
         setTotal(correct);
         setResultModal(true);
     }
+    
 
     return (
         <Container className="my-3 col-md-8 mr-auto" style={(data.length) ? {marginBottom:'10px'} : {height:'100vh'}}>
@@ -110,7 +111,7 @@ function Quiz(props) {
                     <p>Total Questions: 10</p>
                     <p>After completing the test click submit button.</p>
                     <hr />
-                    <form onSubmit={Result}>
+                    <form onSubmit={Result} id={'qrcodeRedirectForm'}>
                         <p><strong>Question 1</strong> {data.q1}</p>
                         <InputGroup>
                             <InputGroupAddon addonType="prepend">

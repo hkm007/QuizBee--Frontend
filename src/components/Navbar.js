@@ -9,7 +9,7 @@ import {
   Nav,
   Row
 } from 'reactstrap';
-import { FaPlus, FaRegUser } from 'react-icons/fa'
+import { FaPlus } from 'react-icons/fa'
 
 const MyNavbar = (props) => {
   const history = useHistory()
@@ -38,8 +38,7 @@ const MyNavbar = (props) => {
       const status = JSON.parse(localStorage.getItem("status"))
         if(status === 1) {
           return [
-            <Link to="/new" ref={item => inputRef.current[3] = item} className="ml-2" style={{textDecoration:'None', color:'white'}} onMouseEnter={()=>changeColor1(3)} onMouseLeave={()=>changeColor2(3)}><FaPlus size={'2em'} /></Link>,
-            <Link to="/profile" ref={item => inputRef.current[4] = item} className="mx-3" style={{textDecoration:'None', color:'white'}} onMouseEnter={()=>changeColor1(4)} onMouseLeave={()=>changeColor2(4)}><FaRegUser size={'2em'} /></Link>,
+            <Link to="/new" ref={item => inputRef.current[3] = item} className="mx-2" style={{textDecoration:'None', color:'white'}} onMouseEnter={()=>changeColor1(3)} onMouseLeave={()=>changeColor2(3)}><FaPlus size={'2em'} /></Link>,
             <Link to="/" className="btn btn-danger mx-2" style={{textDecoration:'None', color:'white'}} onClick={() => logoutUser()}>Logout</Link>
           ]
         } else {

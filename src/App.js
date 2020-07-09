@@ -18,7 +18,6 @@ import Quiz from './components/screens/Quiz';
 import Login from './components/screens/Login';
 import Register from './components/screens/Register';
 import NewQuiz from './components/screens/NewQuiz';
-import Profile from './components/screens/Profile';
 import { reducer, initialState } from './reducers/userReducer'
 import { reducerLoading, initialstateLoading } from './reducers/loadingReducer'
 
@@ -51,7 +50,6 @@ const Routing = () => {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/new" component={NewQuiz} />
-            <Route path="/profile" component={Profile} />
         </Switch>
     )
 }

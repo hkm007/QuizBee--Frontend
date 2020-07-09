@@ -15,8 +15,8 @@ function Home() {
                 </center>
             </Jumbotron>
             <Container>
-            <div class="card mb-4" style={{borderRadius:'20px', backgroundColor:'white', boxShadow:'10px 10px 5px black', backgroundImage:"url('https://images.unsplash.com/photo-1533628635777-112b2239b1c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')"}}>
-                <div class="card-body">
+            <div className="card mb-4" style={{borderRadius:'20px', backgroundColor:'white', boxShadow:'10px 10px 5px black', backgroundImage:"url('https://images.unsplash.com/photo-1533628635777-112b2239b1c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')"}}>
+                <div className="card-body">
                     <p className="text-muted" style={{fontSize:'20px'}}>
                         Welcome to QuizBee. It is an online quiz portal for students of any stream. Anyone can come here and participate in different quizes arranged by various talented mentors.
                     </p>

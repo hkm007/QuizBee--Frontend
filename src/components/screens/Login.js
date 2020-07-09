@@ -73,8 +73,7 @@ function Login() {
                                 <button type="submit" className="btn btn-success">Login</button>
                             </center>
                         </form>
-                        <center>
-                            <p className="mb-2 mt-3">Forgot Password ?</p>
+                        <center><br />
                             <Link to="/register" style={{textDecoration:'none', color:'black'}}>Don't have an account ?</Link>
                         </center>
                     </div>
